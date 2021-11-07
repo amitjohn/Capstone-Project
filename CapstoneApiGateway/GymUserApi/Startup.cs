@@ -36,7 +36,12 @@ namespace GymUserApi
 
             services.AddControllers();
             services.AddScoped<ITokenGeneratorService, TokenGeneratorService>();
-            services.AddDbContext<UserDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            string server = Environment.GetEnvironmentVariable("SQL_DB");
+            if (server == null)
+            {
+                server = Configuration.GetConnectionString("DefaultConnection");
+            }
+            services.AddDbContext<UserDbContext>(options => options.UseSqlServer(server));
             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<UserDbContext>();
             services.AddAuthentication(options =>
             {
@@ -75,6 +80,7 @@ namespace GymUserApi
             }
 
             app.UseHttpsRedirection();
+            
 
             app.UseRouting();
 

@@ -35,7 +35,12 @@ namespace EnrollmentsService
         {
             services.AddHttpClient();
             services.AddControllers();
-            services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            string server = Environment.GetEnvironmentVariable("SQLEN_DB");
+            if (server == null)
+            {
+                server = Configuration.GetConnectionString("DefaultConnection");
+            }
+            services.AddDbContext<DataContext>(options => options.UseSqlServer(server));
             services.AddScoped<IEnrollmentRepository, EnrollmentRepository>();
             services.AddScoped<IUserProfileRepository, UserProfileRepository>();
             services.AddScoped<IMembershipRepository, MembershipRepository>();
