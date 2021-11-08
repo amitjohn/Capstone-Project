@@ -2,11 +2,11 @@
   "Routes": [
     {
       "DownstreamPathTemplate": "/api/User/register",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44317
+          "Host": "user-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/register",
@@ -14,11 +14,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/User/login",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44317
+          "Host": "user-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/login",
@@ -26,11 +26,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/User/logout",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44317
+          "Host": "user-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/logout",
@@ -38,11 +38,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/User/profile/{Email}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44317
+          "Host": "user-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/User/profile/{Email}",
@@ -50,24 +50,24 @@
     },
     {
       "DownstreamPathTemplate": "/api/User/update/{userName}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44317
+          "Host": "user-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/update/{userName}",
       "UpstreamHttpMethod": [ "Put" ]
     },
-    //Routes for FITNESS PROGRAMS API
+
     {
       "DownstreamPathTemplate": "/api/Programs",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44344
+          "Host": "programs-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Programs",
@@ -75,11 +75,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Programs/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44344
+          "Host": "programs-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Programs/{id}",
@@ -87,11 +87,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Programs/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44344
+          "Host": "programs-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Programs/{id}",
@@ -99,11 +99,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Programs",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44344
+          "Host": "programs-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Programs/",
@@ -111,24 +111,24 @@
     },
     {
       "DownstreamPathTemplate": "/api/Programs/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44344
+          "Host": "programs-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Programs/{id}",
       "UpstreamHttpMethod": [ "Delete" ]
     },
-    //Routes for Enqueries API
+
     {
       "DownstreamPathTemplate": "/api/Enquiry",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44336
+          "Host": "enquiry-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Enquiry/",
@@ -136,11 +136,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Enquiry/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44336
+          "Host": "enquiry-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Enquiry/{id}",
@@ -148,11 +148,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Enquiry/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44336
+          "Host": "enquiry-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Enquiry/{id}",
@@ -160,11 +160,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Enquiry",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44336
+          "Host": "enquiry-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Enquiry",
@@ -172,25 +172,24 @@
     },
     {
       "DownstreamPathTemplate": "/api/Enquiry/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44336
+          "Host": "enquiry-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Enquiry/{id}",
       "UpstreamHttpMethod": [ "Put" ]
     },
-    //Roures for Enrollment Service API
-    //Enrollment Controlller
+
     {
       "DownstreamPathTemplate": "/api/Enrollment/{programName}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44347
+          "Host": "enrollment-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Enrollment/{programName}",
@@ -198,11 +197,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Enrollment/member/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44347
+          "Host": "enrollment-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Enrollment/member/{id}",
@@ -210,11 +209,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Enrollment/",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44347
+          "Host": "enrollment-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Enrollment",
@@ -222,11 +221,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Enrollment/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44347
+          "Host": "enrollment-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Enrollment/{id}",
@@ -234,11 +233,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Enrollment/fetch/{UserName}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44347
+          "Host": "enrollment-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Enrollment/fetch/{UserName}",
@@ -246,24 +245,24 @@
     },
     {
       "DownstreamPathTemplate": "/api/Enrollment/membership/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44347
+          "Host": "enrollment-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Enrollment/membership/{id}",
       "UpstreamHttpMethod": [ "Get" ]
     },
-    //Membership Controller
+
     {
       "DownstreamPathTemplate": "/api/Membership/{EnrollmentId}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44347
+          "Host": "enrollment-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Membership/{EnrollmentId}",
@@ -271,24 +270,24 @@
     },
     {
       "DownstreamPathTemplate": "/api/Membership/{EnrollmentId}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44347
+          "Host": "enrollment-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Membership/{EnrollmentId}",
       "UpstreamHttpMethod": [ "Put" ]
     },
-    //User Profile Controller
+
     {
       "DownstreamPathTemplate": "/api/UserProfile/",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44347
+          "Host": "enrollment-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/UserProfile",
@@ -296,11 +295,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/UserProfile/nutrition/{EnrollmentId}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44347
+          "Host": "enrollment-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/UserProfile/nutrition/{EnrollmentId}",
@@ -308,11 +307,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/UserProfile/{EnrollmentId}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44347
+          "Host": "enrollment-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/UserProfile/{EnrollmentId}",

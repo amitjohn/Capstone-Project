@@ -1,39 +1,11 @@
 version: '3.5'
 services:
 
-  apigateway:
-    image:  capstoneapigateway
-    ports:
-      - "9001:80"
-    
-
-  enquiriesapi:
-    image: enquiriesapi
-    ports:
-      - "5000:80"
-    environment:
-      Mongo_DB: "mongodb://db:27017"
-      DB_NAME: "EnquiryDatabase"
-    depends_on:
-      - db
-      - apigateway
-
-  fitnessprogramsapi:
-    image: fitnessprograms
-    ports:
-      - "5001:80"
-    environment:
-      Mongo_DB: "mongodb://db:27017"
-      DB_NAME: "ProgramDatabase"
-    depends_on:
-      - db
-      - apigateway
-
   db:
     image: mongo
     ports:
       - "27017:27017"
-  
+
   sqlserverdb:
     image: mcr.microsoft.com/mssql/server:2019-latest
     ports:
@@ -41,23 +13,54 @@ services:
     environment:
       - SA_PASSWORD=pass@123
       - ACCEPT_EULA=Y
+
+  capstoneapigateway:
+    image:  capstoneapigateway
+    ports:
+      - "9001:80"
+
+  enquiriesapi:
+    image: enquiriesapi
+    ports:
+      - "44336:80"
+    environment:
+      Mongo_DB: "mongodb://db:27017"
+      DB_NAME: "EnquiryDatabase"
+    depends_on:
+      - db
+      - capstoneapigateway
+    container_name: enquiry-service
+
+  fitnessprogramsapi:
+    image: fitnessprograms
+    ports:
+      - "44344:80"
+    environment:
+      Mongo_DB: "mongodb://db:27017"
+      DB_NAME: "ProgramDatabase"
+    depends_on:
+      - db
+      - apigateway
+    container_name: programs-service
   
   gymuserapi:
     image: gymuserapi
     ports:
-      - "5002:80"
+      - "44317:80"
     environment:
       SQL_DB: "Data Source=sqlserverdb;Initial Catalog=UserDB;User Id=sa;Password=pass@123"
     depends_on:
       - sqlserverdb
       - apigateway
+    container_name: user-service
 
   enrollmentsapi:
     image: enrollments
     ports:
-      - "9000:80"
+      - "44347:80"
     environment:
       SQLEN_DB: "Data Source=sqlserverdb;Initial Catalog=EnrollmentsDB;User Id=sa;Password=pass@123"
     depends_on:
       - sqlserverdb
       - apigateway
+    container_name: enrollment-service

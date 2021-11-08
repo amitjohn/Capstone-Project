@@ -15,7 +15,7 @@ namespace Test.InfraSetup
         public EnquiryDataContext context;
         public EnquiryDbFixture()
         {
-            var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+            var builder = new ConfigurationBuilder().AddJsonFile("appsettings.test.json");
 
             configuration = builder.Build();
             context = new EnquiryDataContext(configuration);

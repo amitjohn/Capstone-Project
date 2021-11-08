@@ -56,7 +56,7 @@ namespace EnrollmentsService.Controllers
         public async Task<IActionResult> fetchUserDetails(string UserName)
         {
             var request = new HttpRequestMessage(HttpMethod.Get,
-           $"https://localhost:44317/api/User/profile/{UserName}");
+           $"https://user-service:44317/api/User/profile/{UserName}");
             request.Headers.Add("Accept", "application/vnd.github.v3+json");
             request.Headers.Add("User-Agent", "HttpClientFactory-Sample");
             var client = _clientFactory.CreateClient();

@@ -15,7 +15,7 @@ namespace Test.InfraSetup
         public ProgramsContext context;
         public ProgramsDbFixture()
         {
-            var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+            var builder = new ConfigurationBuilder().AddJsonFile("appsettings.test.json");
 
             configuration = builder.Build();
             context = new ProgramsContext(configuration);
