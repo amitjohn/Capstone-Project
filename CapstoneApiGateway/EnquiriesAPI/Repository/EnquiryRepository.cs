@@ -39,10 +39,11 @@ namespace EnquiriesAPI.Repository
             return db.Enquiries.Find(x=>x.EnquiryId == enquiry.EnquiryId).FirstOrDefault();
         }
 
-        public bool EnquiryStatusUpdate(int id)
+        public bool EnquiryStatusUpdate(int id, string Remarks)
         {
             var filters = Builders<Enquiry>.Filter.Where(x => x.EnquiryId == id);
-            var update = Builders<Enquiry>.Update.Set(x => x.IsResolved, true);
+            var update = Builders<Enquiry>.Update.Set(x => x.IsResolved, true)
+                .Set(x=>x.Remarks, Remarks);
              db.Enquiries.UpdateOne(filters, update);
             return true;
         }

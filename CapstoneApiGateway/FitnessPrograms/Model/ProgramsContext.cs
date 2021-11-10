@@ -13,9 +13,19 @@ namespace FitnessPrograms.Model
         IMongoDatabase database;
         public ProgramsContext(IConfiguration configuration)
         {
+            string server = Environment.GetEnvironmentVariable("Mongo_DB");
+            string db_name = Environment.GetEnvironmentVariable("DB_NAME");
+            if (server == null)
+            {
+                server = configuration.GetSection("MongoDB").GetSection("ConnectionString").Value;
+            }
+            if (db_name == null)
+            {
+                db_name = configuration.GetSection("MongoDB").GetSection("ProgramDatabase").Value;
+            }
             //Initialize MongoClient and Database using connection string and database name from configuration
-            client = new MongoClient(configuration.GetSection("MongoDB").GetSection("ConnectionString").Value);
-            database = client.GetDatabase(configuration.GetSection("MongoDB").GetSection("ProgramDatabase").Value);
+            client = new MongoClient(server);
+            database = client.GetDatabase(db_name);
         }
 
         //Define a MongoCollection to represent the Notes collection of MongoDB based on NoteUser type

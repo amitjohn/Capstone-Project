@@ -27,14 +27,14 @@ namespace EnquiriesAPI.Services
             return repo.DeleteEnquiry(id);
         }
 
-        public bool EnquiryStatusUpdate(int id)
+        public bool EnquiryStatusUpdate(int id, string Remarks)
         {
             var res = repo.GetEnquiryById(id);
             if(res == null)
             {
                 throw new EnquiryNotFoundException("Enquiry Id Not Exists");
             }
-             return repo.EnquiryStatusUpdate(id);
+             return repo.EnquiryStatusUpdate(id, Remarks);
         }
 
         public List<Enquiry> GetEnquiries()

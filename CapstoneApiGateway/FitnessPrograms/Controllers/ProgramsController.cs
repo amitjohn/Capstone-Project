@@ -23,7 +23,7 @@ namespace FitnessPrograms.Controllers
         {
             this._service = service;
         }
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         public IActionResult GetAllPrograms()
         {
@@ -39,19 +39,19 @@ namespace FitnessPrograms.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateProgram(int id, Programs program)
         {
-            return Ok(_service.UpdateProgram(id, program));
+            return Ok(JsonConvert.SerializeObject(_service.UpdateProgram(id, program)));
         }
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult AddPrograms(Programs program)
         {
-            return Ok(_service.AddPrograms(program));
+            return Ok(JsonConvert.SerializeObject(_service.AddPrograms(program)));
         }
         [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public IActionResult DeletePrograms(int id)
         {
-            return Ok(_service.DeletePrograms(id));
+            return Ok(JsonConvert.SerializeObject(_service.DeletePrograms(id)));
         }
 
     }

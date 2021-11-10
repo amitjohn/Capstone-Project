@@ -45,8 +45,8 @@ namespace Test.repository
         [Fact, TestPriority(4)]
         public void EnquiryStatusUpdateShouldSuccess()
         {
-            Enquiry enquiry = new Enquiry { EnquiryId = 3, Name = "Ali baba", ContactNo = "0987654333", Description = "A man with few plan", Email = "alibaba@gmail.com", EnquiryType = "Cost", IsResolved = false };
-            var actual = repository.EnquiryStatusUpdate(enquiry.EnquiryId);
+            Enquiry enquiry = new Enquiry { EnquiryId = 3, Name = "Ali baba", ContactNo = "0987654333", Description = "A man with few plan", Email = "alibaba@gmail.com", EnquiryType = "Cost", IsResolved = false, Remarks="No remarks" };
+            var actual = repository.EnquiryStatusUpdate(enquiry.EnquiryId, enquiry.Remarks);
             Assert.True(actual);
         }
     }

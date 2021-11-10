@@ -11,15 +11,25 @@ namespace EnquiriesAPI.Models
     public class EnquiryDataContext 
     {
         MongoClient client;
-        IMongoDatabase db;
+        IMongoDatabase database;
 
-        public EnquiryDataContext(IConfiguration config)
+        public EnquiryDataContext(IConfiguration configuration)
         {
-            var conf = config.GetSection("MongoDB");
-            client = new MongoClient(conf.GetSection("ConnectionString").Value);
-            db = client.GetDatabase(conf.GetSection("EnquiryDatabase").Value);
+            string server = Environment.GetEnvironmentVariable("Mongo_DB");
+            string db_name = Environment.GetEnvironmentVariable("DB_NAME");
+            if (server == null)
+            {
+                server = configuration.GetSection("MongoDB").GetSection("ConnectionString").Value;
+            }
+            if (db_name == null)
+            {
+                db_name = configuration.GetSection("MongoDB").GetSection("EnquiryDatabase").Value;
+            }
+            //Initialize MongoClient and Database using connection string and database name from configuration
+            client = new MongoClient(server);
+            database = client.GetDatabase(db_name);
         }
 
-        public IMongoCollection<Enquiry> Enquiries => db.GetCollection<Enquiry>("Enquiries");
+        public IMongoCollection<Enquiry> Enquiries => database.GetCollection<Enquiry>("Enquiries");
     }
 }

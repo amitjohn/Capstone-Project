@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace GymUserApi.Model
     {
         public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
         {
-            Database.EnsureCreated();
+            Database.EnsureCreated();    
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {

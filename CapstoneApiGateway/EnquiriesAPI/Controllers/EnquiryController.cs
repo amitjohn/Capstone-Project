@@ -5,6 +5,7 @@ using EnquiriesAPI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace EnquiriesAPI.Controllers
         {
             try
             {
-                return Ok(service.GetEnquiries());
+                return Ok(JsonConvert.SerializeObject(service.GetEnquiries()));
             }
             catch (EnquiryNotFoundException e)
             {
@@ -42,22 +43,21 @@ namespace EnquiriesAPI.Controllers
             try
             {
                 service.DeleteEnquiry(id);
-                return Ok("Enquiry Deleteed Succesfully");
+                return Ok(JsonConvert.SerializeObject("Enquiry Deleteed Succesfully"));
             }
             catch (EnquiryNotFoundException e)
             {
                 return NotFound(e.Message);
-            }
-
-           
+            }  
         }
-        //[Authorize(Roles ="Admin, Employee")]
+
+        [Authorize(Roles ="Admin, Employee")]
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             try
             {
-               return Ok(service.GetEnquiryById(id));
+               return Ok(JsonConvert.SerializeObject(service.GetEnquiryById(id)));
             }
             catch(EnquiryNotFoundException e)
             {
@@ -65,40 +65,33 @@ namespace EnquiriesAPI.Controllers
             }
             
         }
-        //[Authorize]
+        [Authorize(Roles = "Employee, Member")]
         [HttpPost]
         public IActionResult Post(Enquiry enquiry)
         {
             try
             {
                 service.PostEnquiry(enquiry);
-                return StatusCode(201, "Your Enquiry is Submitted");
+                return StatusCode(201, JsonConvert.SerializeObject("Your Enquiry is Submitted"));
             }catch(EnquiryAlradyExistsException e)
             {
                 return NotFound(e.Message);
-            }
-
-
-          
+            }         
         }
-        [Authorize]
-        [HttpPut("{id}")]
-        public IActionResult Put(int id)
-        {
 
+        [Authorize(Roles ="Admin, Employee")]
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromForm] string Remarks)
+        {
             try
             {
-                service.EnquiryStatusUpdate(id);
-                return Ok("Enquiry Updated ");
+                service.EnquiryStatusUpdate(id, Remarks);
+                return Ok(JsonConvert.SerializeObject("Enquiry Updated"));
             }
             catch (EnquiryNotFoundException e)
             {
                 return NotFound(e.Message);
             }
-
-
         }
-          
-       
     }
 }

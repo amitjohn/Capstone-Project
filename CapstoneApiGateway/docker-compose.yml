@@ -35,12 +35,13 @@ services:
     image: fitnessprograms
     ports:
       - "44344:80"
+      - "5001:443"
     environment:
       Mongo_DB: "mongodb://db:27017"
       DB_NAME: "ProgramDatabase"
     depends_on:
       - db
-      - apigateway
+      - capstoneapigateway
     container_name: programs-service
   
   gymuserapi:
@@ -51,7 +52,7 @@ services:
       SQL_DB: "Data Source=sqlserverdb;Initial Catalog=UserDB;User Id=sa;Password=pass@123"
     depends_on:
       - sqlserverdb
-      - apigateway
+      - capstoneapigateway
     container_name: user-service
 
   enrollmentsapi:
@@ -62,5 +63,5 @@ services:
       SQLEN_DB: "Data Source=sqlserverdb;Initial Catalog=EnrollmentsDB;User Id=sa;Password=pass@123"
     depends_on:
       - sqlserverdb
-      - apigateway
+      - capstoneapigateway
     container_name: enrollment-service

@@ -14,7 +14,7 @@ namespace EnquiriesAPI.Services
 
         bool DeleteEnquiry(int id);
 
-        bool EnquiryStatusUpdate(int id);
+        bool EnquiryStatusUpdate(int id, string Remarks);
         //List<Enquiry> GetNotResolvedEnquiries(bool b);
     }
 }

@@ -106,7 +106,7 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/Programs/",
+      "UpstreamPathTemplate": "/Programs",
       "UpstreamHttpMethod": [ "Post" ]
     },
     {
